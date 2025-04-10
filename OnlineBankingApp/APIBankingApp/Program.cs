@@ -10,6 +10,7 @@ namespace APIBankingApp
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddSignalR();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -23,6 +24,7 @@ namespace APIBankingApp
                 app.UseSwaggerUI();
             }
 
+            app.MapHub<PaymentHub>("/paymenthub");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
